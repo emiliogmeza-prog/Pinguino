@@ -35,6 +35,7 @@ arduino/
 
 python_gui/
   pinguino_gui_usb.py
+  dist/PinguinoRobotUSB.exe
 
 docs/
   CONEXIONES.md
@@ -83,7 +84,7 @@ la estructura pedida en el PDF de la materia.
 | `A` | Modo automatico |
 | `C` | Caminata continua |
 | `S` | Detener |
-| `D` | Demo |
+| `D` | Prueba corta |
 | `+` | Aumentar distancia minima |
 | `-` | Disminuir distancia minima |
 
@@ -96,6 +97,12 @@ pip install -r requirements.txt
 python python_gui/pinguino_gui_usb.py
 ```
 
+Tambien se puede abrir directamente:
+
+```text
+python_gui/dist/PinguinoRobotUSB.exe
+```
+
 ### Botones de la interfaz
 
 | Boton | Comando | Que hace |
@@ -104,7 +111,7 @@ python python_gui/pinguino_gui_usb.py
 | Automatico: frena con sensor | `A` | El robot camina y usa el sensor ultrasonico. Si detecta un obstaculo cerca, se detiene, pita y retrocede. |
 | Caminata continua | `C` | El robot camina de forma continua para probar el mecanismo y medir avance. |
 | Detener robot | `S` | Apaga el motor y deja el robot detenido. Sirve para cortar una prueba desde la interfaz. |
-| Demo corta | `D` | Hace una prueba corta: avanza, se detiene, retrocede un poco y pita. |
+| Prueba corta | `D` | Hace una prueba corta: avanza, se detiene, retrocede un poco y pita. |
 | + Frenar mas lejos | `+` | Aumenta la distancia de frenado del sensor. El robot se detiene desde mas lejos. |
 | - Frenar mas cerca | `-` | Disminuye la distancia de frenado del sensor. El robot se acerca mas antes de detenerse. |
 
