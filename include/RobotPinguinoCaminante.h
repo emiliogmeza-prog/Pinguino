@@ -12,7 +12,7 @@ class PenguinRobot {
       STOPPED,
       AUTOMATIC,
       CONTINUOUS_WALK,
-      DEMO
+      TEST
     };
 
     IMotor* motor;
@@ -65,8 +65,8 @@ class PenguinRobot {
         case CONTINUOUS_WALK:
           continuousWalk();
           break;
-        case DEMO:
-          demoMode();
+        case TEST:
+          testMode();
           break;
       }
     }
@@ -111,8 +111,8 @@ class PenguinRobot {
       delay(300);
     }
 
-    void demoMode() {
-      Serial.println("Modo demo: avance, pausa, retroceso y alerta.");
+    void testMode() {
+      Serial.println("Modo prueba: avance, pausa, retroceso y alerta.");
 
       motor->setSpeed(150);
       motor->forward();
@@ -129,7 +129,7 @@ class PenguinRobot {
       alert->modeSound();
 
       mode = STOPPED;
-      Serial.println("Demo terminado. Modo: detenido");
+      Serial.println("Prueba terminada. Modo: detenido");
     }
 
     void readSerialCommand() {
@@ -154,8 +154,8 @@ class PenguinRobot {
           Serial.println("Modo: caminata continua");
           alert->modeSound();
         } else if (command == 'D' || command == 'd') {
-          mode = DEMO;
-          Serial.println("Modo: demo");
+          mode = TEST;
+          Serial.println("Modo: prueba");
           alert->modeSound();
         } else if (command == '+') {
           changeMinimumDistance(1);
