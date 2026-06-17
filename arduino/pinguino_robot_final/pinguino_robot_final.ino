@@ -22,7 +22,7 @@ void setup() {
   robot.begin();
 
   Serial.println("Kagastian 5000 iniciado");
-  Serial.println("Comandos: A automatico, C caminar, S detener, D demo, + y - distancia");
+  Serial.println("Comandos: A automatico, C caminar, S detener, D prueba, + y - distancia");
 }
 
 void loop() {
