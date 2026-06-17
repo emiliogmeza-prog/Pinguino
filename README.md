@@ -101,12 +101,12 @@ python python_gui/pinguino_gui_usb.py
 | Boton | Comando | Que hace |
 |---|---|---|
 | Conectar | - | Abre la comunicacion con el puerto COM del Arduino. |
-| Automatico: camina y frena con sensor | `A` | El robot camina y usa el sensor ultrasonico. Si detecta un obstaculo cerca, se detiene, pita y retrocede. |
-| Caminar continuo: prueba de avance | `C` | El robot camina de forma continua para probar el mecanismo y medir avance. |
-| Detener robot ahora | `S` | Apaga el motor y deja el robot detenido. Sirve para cortar una prueba desde la interfaz. |
-| Demo: avanza, retrocede y pita | `D` | Hace una prueba corta: avanza, se detiene, retrocede un poco y pita. |
-| Frenar mas lejos con sensor | `+` | Aumenta la distancia de frenado del sensor. El robot se detiene desde mas lejos. |
-| Frenar mas cerca con sensor | `-` | Disminuye la distancia de frenado del sensor. El robot se acerca mas antes de detenerse. |
+| Automatico: frena con sensor | `A` | El robot camina y usa el sensor ultrasonico. Si detecta un obstaculo cerca, se detiene, pita y retrocede. |
+| Caminata continua | `C` | El robot camina de forma continua para probar el mecanismo y medir avance. |
+| Detener robot | `S` | Apaga el motor y deja el robot detenido. Sirve para cortar una prueba desde la interfaz. |
+| Demo corta | `D` | Hace una prueba corta: avanza, se detiene, retrocede un poco y pita. |
+| + Frenar mas lejos | `+` | Aumenta la distancia de frenado del sensor. El robot se detiene desde mas lejos. |
+| - Frenar mas cerca | `-` | Disminuye la distancia de frenado del sensor. El robot se acerca mas antes de detenerse. |
 
 La distancia de frenado es la distancia a la que el sensor hace que el robot se
 detenga por seguridad. Por ejemplo, si esta en 10 cm, cuando el sensor mida 10
