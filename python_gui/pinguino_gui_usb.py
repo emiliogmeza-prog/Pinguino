@@ -61,7 +61,7 @@ def cerrar():
 
 ventana = tk.Tk()
 ventana.title("Control Kagastian 5000")
-ventana.geometry("480x560")
+ventana.geometry("430x470")
 ventana.protocol("WM_DELETE_WINDOW", cerrar)
 
 titulo = tk.Label(
@@ -71,31 +71,15 @@ titulo = tk.Label(
 )
 titulo.pack(pady=10)
 
-descripcion = tk.Label(
-    ventana,
-    text="Control por USB para el robot caminante con patas. No usa Bluetooth.",
-    wraplength=420
-)
+descripcion = tk.Label(ventana, text="Control por Serial USB.")
 descripcion.pack(pady=5)
-
-ayuda = tk.Label(
-    ventana,
-    text=(
-        "La distancia del sensor es la distancia a la que el robot frena. "
-        "Si se aumenta, se detiene mas lejos del obstaculo. "
-        "Si se disminuye, se acerca mas antes de frenar."
-    ),
-    wraplength=420,
-    justify="left"
-)
-ayuda.pack(pady=8)
 
 tk.Label(ventana, text="Puerto Arduino, ejemplo COM5:").pack(pady=5)
 entrada_puerto = tk.Entry(ventana, width=20)
 entrada_puerto.insert(0, "COM5")
 entrada_puerto.pack(pady=5)
 
-tk.Button(ventana, text="Conectar Arduino por USB", width=38, command=conectar).pack(pady=5)
+tk.Button(ventana, text="Conectar", width=25, command=conectar).pack(pady=5)
 
 estado = tk.Label(ventana, text="No conectado", fg="red")
 estado.pack(pady=5)
@@ -103,35 +87,35 @@ estado.pack(pady=5)
 tk.Button(
     ventana,
     text="Automatico (A): camina y frena con el sensor",
-    width=45,
+    width=42,
     command=lambda: enviar("A", "camina y se detiene si detecta un obstaculo")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
     text="Caminata continua (C): camina para prueba de avance",
-    width=45,
+    width=42,
     command=lambda: enviar("C", "camina de forma continua para probar el mecanismo")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
     text="Demo (D): avanza, retrocede y pita",
-    width=45,
+    width=42,
     command=lambda: enviar("D", "hace una prueba corta de movimiento")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
     text="Frenar mas lejos (+): subir distancia del sensor",
-    width=45,
+    width=42,
     command=lambda: enviar("+", "aumenta la distancia a la que frena")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
     text="Frenar mas cerca (-): bajar distancia del sensor",
-    width=45,
+    width=42,
     command=lambda: enviar("-", "disminuye la distancia a la que frena")
 ).pack(pady=4)
 
