@@ -111,7 +111,7 @@ tk.Button(
 
 tk.Button(
     ventana,
-    text="Demo corta",
+    text="Prueba corta",
     width=30,
     command=lambda: enviar("D", "hace una prueba corta de movimiento")
 ).pack(pady=4)
