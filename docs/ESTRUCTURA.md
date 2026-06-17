@@ -1,11 +1,11 @@
 # Estructura del codigo
 
-El programa se separo en archivos `.h` para que Arduino IDE los muestre como
-pestanas junto al sketch principal.
+El programa se dejo en una sola carpeta llamada `main`. Dentro estan
+`main.ino` y los archivos `.h` para que Arduino IDE los muestre como pestanas.
 
 ## Archivos
 
-- `pinguino_robot_final.ino`: crea los objetos y llama a `robot.update()`.
+- `main.ino`: crea los objetos y llama a `robot.update()`.
 - `InterfazMotor.h`: interfaz para motores.
 - `InterfazSensorDistancia.h`: interfaz para sensores de distancia.
 - `InterfazAlerta.h`: interfaz para alertas.
@@ -19,9 +19,11 @@ pestanas junto al sketch principal.
 - Automatico: camina y revisa el sensor.
 - Caminata continua: prueba de avance.
 - Detenido: apaga el motor.
-- Demo: avance, pausa, retroceso y sonido.
+- Prueba: avance, pausa, retroceso y sonido.
 
 ## Nota de hardware
 
 Se intento usar dos motores, pero la version preparada para entrega usa un solo
 motorreductor funcional. Esto se hizo por fallas en un motor y en el L293D.
+
+La carpeta que se usa para cargar el robot es `main/`.
