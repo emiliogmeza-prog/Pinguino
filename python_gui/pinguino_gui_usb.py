@@ -60,18 +60,22 @@ def cerrar():
 
 
 ventana = tk.Tk()
-ventana.title("Control Kagastian 5000")
-ventana.geometry("430x470")
+ventana.title("Control Pinguino Robot Caminante")
+ventana.geometry("460x540")
 ventana.protocol("WM_DELETE_WINDOW", cerrar)
 
 titulo = tk.Label(
     ventana,
-    text="Kagastian 5000",
+    text="Pinguino Robot Caminante",
     font=("Arial", 14, "bold")
 )
 titulo.pack(pady=10)
 
-descripcion = tk.Label(ventana, text="Control por Serial USB.")
+descripcion = tk.Label(
+    ventana,
+    text="Control por Serial USB para robot con patas, motorreductor y L293D.",
+    wraplength=400
+)
 descripcion.pack(pady=5)
 
 tk.Label(ventana, text="Puerto Arduino, ejemplo COM5:").pack(pady=5)
@@ -86,36 +90,43 @@ estado.pack(pady=5)
 
 tk.Button(
     ventana,
-    text="Automatico (A): camina y frena con el sensor",
-    width=42,
+    text="Automatico: camina y frena con sensor (A)",
+    width=40,
     command=lambda: enviar("A", "camina y se detiene si detecta un obstaculo")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Caminata continua (C): camina para prueba de avance",
-    width=42,
+    text="Caminar continuo: prueba de avance (C)",
+    width=40,
     command=lambda: enviar("C", "camina de forma continua para probar el mecanismo")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Demo (D): avanza, retrocede y pita",
-    width=42,
+    text="Detener robot ahora (S)",
+    width=40,
+    command=lambda: enviar("S", "detiene el motor y deja el robot en reposo")
+).pack(pady=4)
+
+tk.Button(
+    ventana,
+    text="Demo: avanza, retrocede y pita (D)",
+    width=40,
     command=lambda: enviar("D", "hace una prueba corta de movimiento")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Frenar mas lejos (+): subir distancia del sensor",
-    width=42,
+    text="Frenar mas lejos con sensor (+)",
+    width=40,
     command=lambda: enviar("+", "aumenta la distancia a la que frena")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Frenar mas cerca (-): bajar distancia del sensor",
-    width=42,
+    text="Frenar mas cerca con sensor (-)",
+    width=40,
     command=lambda: enviar("-", "disminuye la distancia a la que frena")
 ).pack(pady=4)
 
