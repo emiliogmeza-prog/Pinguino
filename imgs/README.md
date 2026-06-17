@@ -1,9 +1,6 @@
-# Imagenes
+Imagenes
 
-Las imagenes del proceso y componentes estan en la carpeta local:
+Esta carpeta contiene los diagramas, capturas y fotografias del proyecto.
 
-```text
-programacion/imgs
-```
-
-Se pueden agregar aqui si se requiere que toda la evidencia quede en GitHub.
+Las imagenes muestran la arquitectura, las conexiones, la interfaz y el proceso
+de armado del robot.
