@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+build/
+dist/
+*.exe
+*.spec
+
+*.zip
+*.rar
+*.7z
+
+.DS_Store
+Thumbs.db
