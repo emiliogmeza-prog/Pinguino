@@ -3,7 +3,7 @@
 ## Cargar codigo
 
 1. Abrir Arduino IDE.
-2. Abrir `arduino/pinguino_robot_final/pinguino_robot_final.ino`.
+2. Abrir `main/main.ino`.
 3. Seleccionar placa Arduino UNO.
 4. Seleccionar el puerto COM.
 5. Cargar el programa.
@@ -19,12 +19,12 @@
 
 ## Botones
 
-- Automatico: camina y frena con sensor.
-- Caminar continuo: prueba de avance del mecanismo.
-- Detener robot ahora: apaga el motor y deja el robot quieto.
-- Demo: avanza, retrocede y pita.
-- Frenar mas lejos con sensor: aumenta la distancia a la que frena.
-- Frenar mas cerca con sensor: disminuye la distancia a la que frena.
+- Automatico: frena con sensor.
+- Caminata continua: prueba de avance del mecanismo.
+- Detener robot: apaga el motor y deja el robot quieto.
+- Prueba corta: avanza, retrocede y pita.
+- + Frenar mas lejos: aumenta la distancia a la que frena.
+- - Frenar mas cerca: disminuye la distancia a la que frena.
 
 ## Nota
 
