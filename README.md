@@ -1,132 +1,66 @@
-# Kagastian 5000
+Kagastian 5000
 
-Robot caminante inspirado en un pinguino. No usa ruedas; el avance se genera
-con patas movidas por un motorreductor y un mecanismo tipo biela/manivela.
+Robot caminante inspirado en un pinguino. No usa ruedas. El movimiento se
+genera con un motorreductor y un mecanismo de patas tipo biela y manivela.
 
-El proyecto usa Arduino UNO, un puente H L293D, sensor ultrasonico HC-SR04 y un
-buzzer. La comunicacion con la computadora es por Serial USB.
+Componentes:
+- Arduino UNO
+- Un motorreductor
+- Puente H L293D
+- Sensor ultrasonico HC-SR04
+- Buzzer
+- Power bank para Arduino
+- Fuente externa para el motor
 
-## Estado del prototipo
-
-- Version actual con 1 motorreductor funcional.
-- Se probaron 2 motores, pero se regreso a un motor por falla de un motor y del
-  L293D.
+Estado del proyecto:
+- La version actual usa un solo motor.
+- Se probaron dos motores, pero se regreso a uno por la falla de un motor y del L293D.
 - No usa Bluetooth.
 - No usa LEDs.
-- No es un carro con ruedas.
 
-## Carpetas
+Pines:
+- ENA del L293D: 5
+- IN1 del L293D: 2
+- IN2 del L293D: 3
+- TRIG del HC-SR04: 8
+- ECHO del HC-SR04: 9
+- Buzzer: 12
 
-```text
-main.ino
-include/
-  clases e interfaces del proyecto
+Codigo Arduino:
+- Abrir main/main.ino en Arduino IDE.
+- Seleccionar Arduino UNO.
+- Seleccionar el puerto COM.
+- Cargar el programa.
+- Usar el Monitor Serial a 9600 baudios.
 
-arduino/
-  pinguino_robot_final/
-    pinguino_robot_final.ino
-    InterfazMotor.h
-    InterfazSensorDistancia.h
-    InterfazAlerta.h
-    MotorL293DControl.h
-    SensorUltrasonicoHCSR04.h
-    AlertaBuzzer.h
-    RobotPinguinoCaminante.h
+Los archivos .h estan en la carpeta main junto a main.ino para que Arduino IDE
+los muestre como pestanas.
 
-python_gui/
-  pinguino_gui_usb.py
-  dist/PinguinoRobotUSB.exe
+Comandos:
+- A: modo automatico
+- C: caminata continua
+- S: detener
+- D: prueba corta
+- +: frenar a mayor distancia
+- -: frenar a menor distancia
 
-docs/
-  CONEXIONES.md
-  ESTRUCTURA.md
-  DOCUMENTO_PROGRAMACION.md
-  MANUAL_USUARIO.md
-  MANUAL_TECNICO.md
+Interfaz:
+- Archivo Python: python_gui/pinguino_gui_usb.py
+- La comunicacion se realiza por Serial USB.
 
-imgs/
-  Diagrama de arquitectura.png
-  Diagrama del circuito.png
-  Aplicacion.png
-  fotos del prototipo y componentes
+Botones:
+- Conectar: abre la comunicacion con el puerto COM.
+- Automatico: camina y frena cuando el sensor detecta un obstaculo.
+- Caminata continua: mantiene el motor funcionando para probar el avance.
+- Detener robot: detiene el motor.
+- Prueba corta: avanza, se detiene, retrocede y activa el buzzer.
+- Frenar mas lejos: aumenta la distancia de deteccion.
+- Frenar mas cerca: disminuye la distancia de deteccion.
 
-video/
-  proyecto.mp4
-  pruebas del mecanismo
-```
+Programacion orientada a objetos:
+- MotorL293D controla el motor.
+- UltrasonicSensor mide la distancia.
+- BuzzerAlert controla el buzzer.
+- PenguinRobot coordina el funcionamiento.
 
-## Pines usados
-
-| Componente | Pin Arduino |
-|---|---:|
-| ENA L293D | 5 |
-| IN1 L293D | 2 |
-| IN2 L293D | 3 |
-| TRIG HC-SR04 | 8 |
-| ECHO HC-SR04 | 9 |
-| Buzzer | 12 |
-
-## Cargar en Arduino IDE
-
-1. Abrir `arduino/pinguino_robot_final/pinguino_robot_final.ino`.
-2. Seleccionar placa Arduino UNO.
-3. Seleccionar el puerto COM.
-4. Cargar el programa.
-5. Abrir Monitor Serial a 9600 baudios.
-
-Tambien se incluye `main.ino` junto con la carpeta `include/` para cumplir con
-la estructura pedida en el PDF de la materia.
-
-## Comandos Serial
-
-| Comando | Funcion |
-|---|---|
-| `A` | Modo automatico |
-| `C` | Caminata continua |
-| `S` | Detener |
-| `D` | Prueba corta |
-| `+` | Aumentar distancia minima |
-| `-` | Disminuir distancia minima |
-
-## Interfaz Python
-
-La interfaz es opcional y manda comandos por Serial USB.
-
-```bash
-pip install -r requirements.txt
-python python_gui/pinguino_gui_usb.py
-```
-
-Tambien se puede abrir directamente:
-
-```text
-python_gui/dist/PinguinoRobotUSB.exe
-```
-
-### Botones de la interfaz
-
-| Boton | Comando | Que hace |
-|---|---|---|
-| Conectar | - | Abre la comunicacion con el puerto COM del Arduino. |
-| Automatico: frena con sensor | `A` | El robot camina y usa el sensor ultrasonico. Si detecta un obstaculo cerca, se detiene, pita y retrocede. |
-| Caminata continua | `C` | El robot camina de forma continua para probar el mecanismo y medir avance. |
-| Detener robot | `S` | Apaga el motor y deja el robot detenido. Sirve para cortar una prueba desde la interfaz. |
-| Prueba corta | `D` | Hace una prueba corta: avanza, se detiene, retrocede un poco y pita. |
-| + Frenar mas lejos | `+` | Aumenta la distancia de frenado del sensor. El robot se detiene desde mas lejos. |
-| - Frenar mas cerca | `-` | Disminuye la distancia de frenado del sensor. El robot se acerca mas antes de detenerse. |
-
-La distancia de frenado es la distancia a la que el sensor hace que el robot se
-detenga por seguridad. Por ejemplo, si esta en 10 cm, cuando el sensor mida 10
-cm o menos el robot frena.
-
-## POO y SOLID
-
-El codigo esta separado en clases:
-
-- `MotorL293DControl.h`: contiene la clase `MotorL293D`, que controla el motor.
-- `SensorUltrasonicoHCSR04.h`: contiene la clase `UltrasonicSensor`, que lee el HC-SR04.
-- `AlertaBuzzer.h`: contiene la clase `BuzzerAlert`, que controla el buzzer.
-- `RobotPinguinoCaminante.h`: contiene la clase `PenguinRobot`, que coordina los modos.
-
-Tambien se usan interfaces para motor, sensor y alerta. Asi la logica principal
-no depende directamente de un componente especifico.
+El proyecto utiliza interfaces para separar el motor, el sensor y la alerta.
