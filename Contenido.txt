@@ -1,0 +1,30 @@
+Contenido de Programacion
+=========================
+
+README.txt
+  Explicacion principal del proyecto.
+
+README.md
+  Version para GitHub.
+
+main.ino
+  Archivo principal con la estructura pedida por el PDF.
+
+include/
+  Librerias y clases del proyecto.
+
+arduino/pinguino_robot_final/
+  Version para abrir en Arduino IDE con los .h como pestanas.
+
+python_gui/
+  Interfaz grafica en Python con Tkinter y Serial USB.
+
+docs/
+  Documento de Programacion, conexiones, estructura, manual de usuario,
+  manual tecnico e instrucciones del PDF.
+
+imgs/
+  Diagramas, imagen de la interfaz y fotografias del prototipo.
+
+video/
+  Video de funcionamiento.
