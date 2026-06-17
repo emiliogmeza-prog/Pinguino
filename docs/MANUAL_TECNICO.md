@@ -17,9 +17,8 @@
 
 ## Archivos principales
 
-- `main.ino`: version en estructura pedida por el PDF.
-- `include/`: clases e interfaces del proyecto.
-- `arduino/pinguino_robot_final/`: version comoda para Arduino IDE con archivos `.h` visibles como pestanas.
+- `main/main.ino`: sketch principal para Arduino IDE.
+- `main/*.h`: clases e interfaces visibles como pestanas.
 - `python_gui/pinguino_gui_usb.py`: interfaz por Serial USB.
 
 ## Comunicacion
@@ -32,6 +31,6 @@ Arduino cambia el modo del robot.
 - `A`: automatico.
 - `C`: caminar continuo.
 - `S`: detener.
-- `D`: demo.
+- `D`: prueba corta.
 - `+`: frenar mas lejos.
 - `-`: frenar mas cerca.
