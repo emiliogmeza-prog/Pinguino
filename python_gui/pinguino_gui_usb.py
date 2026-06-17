@@ -61,7 +61,7 @@ def cerrar():
 
 ventana = tk.Tk()
 ventana.title("Control Pinguino Robot Caminante")
-ventana.geometry("460x540")
+ventana.geometry("420x500")
 ventana.protocol("WM_DELETE_WINDOW", cerrar)
 
 titulo = tk.Label(
@@ -74,7 +74,7 @@ titulo.pack(pady=10)
 descripcion = tk.Label(
     ventana,
     text="Control por Serial USB para robot con patas, motorreductor y L293D.",
-    wraplength=400
+    wraplength=360
 )
 descripcion.pack(pady=5)
 
@@ -90,47 +90,47 @@ estado.pack(pady=5)
 
 tk.Button(
     ventana,
-    text="Automatico: camina y frena con sensor (A)",
-    width=40,
+    text="Automatico: frena con sensor",
+    width=30,
     command=lambda: enviar("A", "camina y se detiene si detecta un obstaculo")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Caminar continuo: prueba de avance (C)",
-    width=40,
+    text="Caminata continua",
+    width=30,
     command=lambda: enviar("C", "camina de forma continua para probar el mecanismo")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Detener robot ahora (S)",
-    width=40,
+    text="Detener robot",
+    width=30,
     command=lambda: enviar("S", "detiene el motor y deja el robot en reposo")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Demo: avanza, retrocede y pita (D)",
-    width=40,
+    text="Demo corta",
+    width=30,
     command=lambda: enviar("D", "hace una prueba corta de movimiento")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Frenar mas lejos con sensor (+)",
-    width=40,
+    text="+ Frenar mas lejos",
+    width=30,
     command=lambda: enviar("+", "aumenta la distancia a la que frena")
 ).pack(pady=4)
 
 tk.Button(
     ventana,
-    text="Frenar mas cerca con sensor (-)",
-    width=40,
+    text="- Frenar mas cerca",
+    width=30,
     command=lambda: enviar("-", "disminuye la distancia a la que frena")
 ).pack(pady=4)
 
-registro = tk.Text(ventana, height=8, width=48)
+registro = tk.Text(ventana, height=5, width=48)
 registro.pack(pady=10)
 log("Listo. Conecta el Arduino por USB y elige el puerto COM.")
 
