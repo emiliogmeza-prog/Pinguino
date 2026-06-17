@@ -1,9 +1,4 @@
-# Videos
+Videos
 
-Los videos de funcionamiento estan en la carpeta local:
-
-```text
-programacion/video
-```
-
-Incluyen la prueba de funcionamiento y la demostracion del mecanismo.
+Esta carpeta contiene los videos de funcionamiento y las pruebas del mecanismo
+de patas del robot.
