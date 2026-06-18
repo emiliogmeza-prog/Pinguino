@@ -6,7 +6,8 @@ motorreductor mueve un mecanismo de patas mientras un Arduino UNO coordina el
 sensor ultrasónico, el buzzer y la comunicación con una interfaz en Python.
 
 ![Prototipo durante las pruebas](imgs/Pruebaencaja.jpeg)
-
+![Prototipo durante las pruebas](imgs/Diagrama_de_Circuito.png
+)
 ## Funciones principales
 
 - Caminata automática con detección de obstáculos.
