@@ -38,7 +38,7 @@ sensor ultrasónico, el buzzer y la comunicación con una interfaz en Python.
 | 9 | ECHO del HC-SR04 |
 | 12 | Buzzer |
 
-![Diagrama de conexiones](imgs/Diagrama_del_circuito_corregido.png)
+![Diagrama](imgs/Diagrama_del_circuito_corregido.png)
 
 ## Software y estructura
 
