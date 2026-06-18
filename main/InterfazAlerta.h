@@ -1,6 +1,7 @@
 #ifndef INTERFAZALERTA_H
 #define INTERFAZALERTA_H
 
+// Contrato pequeno para las alertas sonoras usadas por el robot.
 class IAlert {
   public:
     virtual ~IAlert() {}

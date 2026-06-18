@@ -7,17 +7,13 @@ README.txt
 README.md
   Version para GitHub.
 
-main.ino
-  Archivo principal con la estructura pedida por el PDF.
-
-include/
-  Librerias y clases del proyecto.
-
-arduino/pinguino_robot_final/
-  Version para abrir en Arduino IDE con los .h como pestanas.
+main/
+  Carpeta principal para Arduino IDE.
+  Contiene main.ino y los archivos .h como pestanas.
 
 python_gui/
   Interfaz grafica en Python con Tkinter y Serial USB.
+  Incluye dist/PinguinoRobotUSB.exe para abrir sin Python IDLE.
 
 docs/
   Documento de Programacion, conexiones, estructura, manual de usuario,

@@ -1,66 +1,130 @@
-Kagastian 5000
+# Kagastian 5000
 
-Robot caminante inspirado en un pinguino. No usa ruedas. El movimiento se
-genera con un motorreductor y un mecanismo de patas tipo biela y manivela.
+Robot caminante inspirado en un pingüino, desarrollado para el proyecto del
+tercer parcial de Programación Avanzada. El robot no utiliza ruedas: un
+motorreductor mueve un mecanismo de patas mientras un Arduino UNO coordina el
+sensor ultrasónico, el buzzer y la comunicación con una interfaz en Python.
 
-Componentes:
-- Arduino UNO
-- Un motorreductor
-- Puente H L293D
-- Sensor ultrasonico HC-SR04
-- Buzzer
-- Power bank para Arduino
-- Fuente externa para el motor
+![Prototipo durante las pruebas](imgs/Pruebaencaja.jpeg)
 
-Estado del proyecto:
-- La version actual usa un solo motor.
-- Se probaron dos motores, pero se regreso a uno por la falla de un motor y del L293D.
-- No usa Bluetooth.
-- No usa LEDs.
+## Funciones principales
 
-Pines:
-- ENA del L293D: 5
-- IN1 del L293D: 2
-- IN2 del L293D: 3
-- TRIG del HC-SR04: 8
-- ECHO del HC-SR04: 9
-- Buzzer: 12
+- Caminata automática con detección de obstáculos.
+- Caminata continua para probar el mecanismo.
+- Detención inmediata desde la computadora.
+- Secuencia corta de avance, retroceso y alerta.
+- Ajuste del umbral de detección entre 5 y 50 cm.
+- Visualización de distancia, estado y eventos en tiempo real.
+- Comunicación Serial USB a 9600 baudios.
 
-Codigo Arduino:
-- Abrir main/main.ino en Arduino IDE.
-- Seleccionar Arduino UNO.
-- Seleccionar el puerto COM.
-- Cargar el programa.
-- Usar el Monitor Serial a 9600 baudios.
+## Hardware
 
-Los archivos .h estan en la carpeta main junto a main.ino para que Arduino IDE
-los muestre como pestanas.
+- Arduino UNO.
+- Motorreductor TT.
+- Puente H L293D.
+- Sensor ultrasónico HC-SR04.
+- Buzzer.
+- Fuente USB para Arduino.
+- Fuente externa para el motor con tierra común.
 
-Comandos:
-- A: modo automatico
-- C: caminata continua
-- S: detener
-- D: prueba corta
-- +: frenar a mayor distancia
-- -: frenar a menor distancia
+### Pines
 
-Interfaz:
-- Archivo Python: python_gui/pinguino_gui_usb.py
-- La comunicacion se realiza por Serial USB.
+| Pin Arduino | Dispositivo |
+|---|---|
+| 5 | ENA del L293D |
+| 2 | IN1 del L293D |
+| 3 | IN2 del L293D |
+| 8 | TRIG del HC-SR04 |
+| 9 | ECHO del HC-SR04 |
+| 12 | Buzzer |
 
-Botones:
-- Conectar: abre la comunicacion con el puerto COM.
-- Automatico: camina y frena cuando el sensor detecta un obstaculo.
-- Caminata continua: mantiene el motor funcionando para probar el avance.
-- Detener robot: detiene el motor.
-- Prueba corta: avanza, se detiene, retrocede y activa el buzzer.
-- Frenar mas lejos: aumenta la distancia de deteccion.
-- Frenar mas cerca: disminuye la distancia de deteccion.
+![Diagrama de conexiones](imgs/Diagrama_del_circuito_corregido.png)
 
-Programacion orientada a objetos:
-- MotorL293D controla el motor.
-- UltrasonicSensor mide la distancia.
-- BuzzerAlert controla el buzzer.
-- PenguinRobot coordina el funcionamiento.
+## Software y estructura
 
-El proyecto utiliza interfaces para separar el motor, el sensor y la alerta.
+```text
+main/
+  main.ino
+  RobotPinguinoCaminante.h
+  MotorL293DControl.h
+  SensorUltrasonicoHCSR04.h
+  AlertaBuzzer.h
+  InterfazMotor.h
+  InterfazSensorDistancia.h
+  InterfazAlerta.h
+
+python_gui/
+  pinguino_gui_usb.py
+  dist/PinguinoRobotUSB.exe
+
+docs/
+  Reporte_Final_Programacion_Avanzada_Kagastian_5000.pdf
+  Reporte_Final_Programacion_Avanzada_Kagastian_5000.docx
+  GUIA_EXAMEN_ORAL.md
+
+imgs/
+  Diagramas, interfaz y fotografías del prototipo
+
+video/
+  Evidencias de funcionamiento
+```
+
+La lógica depende de las interfaces `IMotor`, `IDistanceSensor` e `IAlert`.
+Las clases `MotorL293D`, `UltrasonicSensor` y `BuzzerAlert` implementan esas
+abstracciones. `PenguinRobot` recibe los componentes mediante su constructor y
+coordina el comportamiento.
+
+![Arquitectura por capas](imgs/Diagrama_de_capas_programacion.png)
+
+## Protocolo serial
+
+| Comando | Acción |
+|---|---|
+| `A` | Modo automático |
+| `C` | Caminata continua |
+| `S` | Detener |
+| `D` | Prueba corta |
+| `+` | Frenar un centímetro más lejos |
+| `-` | Frenar un centímetro más cerca |
+
+Arduino devuelve mensajes de estado y mediciones con el formato
+`Distancia: N cm`. La interfaz consulta el puerto cada 100 ms mediante
+`ventana.after()`, por lo que no se congela mientras recibe datos.
+
+## Cargar el programa en Arduino
+
+1. Abrir `main/main.ino` en Arduino IDE.
+2. Seleccionar la placa Arduino UNO.
+3. Seleccionar el puerto COM.
+4. Cargar el programa.
+5. Cerrar el Monitor Serial antes de abrir la interfaz Python.
+
+## Ejecutar la interfaz
+
+Con Python:
+
+```bash
+pip install pyserial
+python python_gui/pinguino_gui_usb.py
+```
+
+También puede utilizarse `python_gui/dist/PinguinoRobotUSB.exe`.
+
+![Interfaz actualizada](imgs/Aplicacion_actualizada.png)
+
+## Evidencias
+
+![Prueba sobre protoboard](imgs/Pruebaenprotoboard.jpeg)
+
+- [Video principal](video/proyecto.mp4)
+- [Prueba de funcionamiento](video/Funcionamientoprueba.mp4)
+- [Demostración del mecanismo](video/DemostracionMecanismo.mp4)
+- [Reporte final en PDF](docs/Reporte_Final_Programacion_Avanzada_Kagastian_5000.pdf)
+
+## Integrantes
+
+- 6100090 - Diego De la O Arellano
+- 6100093 - Hazel Ramírez Vázquez
+- 6100103 - Diego Sebastián Espinoza Pérez
+- 6100116 - Emilio Giovanni Meza Méndez
+- 6100130 - David Alexander Torres Jalomo

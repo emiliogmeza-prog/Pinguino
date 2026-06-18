@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include "InterfazMotor.h"
 
+// Implementa IMotor mediante un canal del puente H L293D.
 class MotorL293D : public IMotor {
   private:
     byte enablePin;
@@ -27,6 +28,7 @@ class MotorL293D : public IMotor {
     }
 
     void setSpeed(int speedValue) override {
+      // Limita el PWM al rango valido de Arduino.
       speedMotor = constrain(speedValue, 0, 255);
     }
 

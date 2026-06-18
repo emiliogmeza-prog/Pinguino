@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include "InterfazAlerta.h"
 
+// Implementacion de alertas audibles mediante las funciones tone y noTone.
 class BuzzerAlert : public IAlert {
   private:
     byte buzzerPin;

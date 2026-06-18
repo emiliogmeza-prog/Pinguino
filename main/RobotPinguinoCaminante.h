@@ -6,8 +6,10 @@
 #include "InterfazSensorDistancia.h"
 #include "InterfazAlerta.h"
 
+// Coordina los modos del robot sin depender de componentes concretos.
 class PenguinRobot {
   private:
+    // Estados principales disponibles desde la interfaz o Monitor Serial.
     enum RobotMode {
       STOPPED,
       AUTOMATIC,
@@ -53,6 +55,7 @@ class PenguinRobot {
     }
 
     void update() {
+      // Primero procesa comandos y despues ejecuta el modo seleccionado.
       readSerialCommand();
 
       switch (mode) {
@@ -76,6 +79,7 @@ class PenguinRobot {
       int distance = sensor->getDistanceCm();
       printDistance(distance);
 
+      // El robot evita el obstaculo cuando alcanza el umbral configurado.
       if (distance <= minDistanceCm) {
         avoidObstacle();
       } else {
@@ -133,6 +137,7 @@ class PenguinRobot {
     }
 
     void readSerialCommand() {
+      // Se aceptan mayusculas y minusculas; espacios y saltos se ignoran.
       while (Serial.available() > 0) {
         char command = Serial.read();
 
@@ -169,6 +174,7 @@ class PenguinRobot {
     }
 
     void changeMinimumDistance(int delta) {
+      // Protege el sistema contra umbrales fuera del rango de 5 a 50 cm.
       minDistanceCm = constrain(
         minDistanceCm + delta,
         MIN_ALLOWED_DISTANCE_CM,
@@ -181,6 +187,7 @@ class PenguinRobot {
     }
 
     void printDistance(int distance) {
+      // Limita la telemetria a dos lecturas por segundo.
       unsigned long now = millis();
       if (now - lastDistancePrintMs < 500) {
         return;

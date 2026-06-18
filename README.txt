@@ -24,5 +24,6 @@ Comandos:
 
 Interfaz:
 - python_gui/pinguino_gui_usb.py
+- python_gui/dist/PinguinoRobotUSB.exe
 
 La interfaz se conecta por Serial USB. No usa Bluetooth.
