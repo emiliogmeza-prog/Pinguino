@@ -17,7 +17,7 @@ sensor ultrasónico, el buzzer y la comunicación con una interfaz en Python.
 - Visualización de distancia, estado y eventos en tiempo real.
 - Comunicación Serial USB a 9600 baudios.
 
-## Hardware
+Hardware
 
 - Arduino UNO.
 - Motorreductor TT.
@@ -27,7 +27,7 @@ sensor ultrasónico, el buzzer y la comunicación con una interfaz en Python.
 - Fuente USB para Arduino.
 - Fuente externa para el motor con tierra común.
 
-### Pines
+Pines
 
 | Pin Arduino | Dispositivo |
 |---|---|
@@ -76,7 +76,7 @@ coordina el comportamiento.
 
 ![Arquitectura por capas](imgs/Diagrama_de_capas_programacion.png)
 
-## Protocolo serial
+ Protocolo serial
 
 | Comando | Acción |
 |---|---|
@@ -112,14 +112,11 @@ También puede utilizarse `python_gui/dist/PinguinoRobotUSB.exe`.
 
 ![Interfaz actualizada](imgs/Aplicacion_actualizada.png)
 
-## Evidencias
+Evidencias
 
 ![Prueba sobre protoboard](imgs/Pruebaenprotoboard.jpeg)
 
-- [Video principal](video/proyecto.mp4)
-- [Prueba de funcionamiento](video/Funcionamientoprueba.mp4)
-- [Demostración del mecanismo](video/DemostracionMecanismo.mp4)
-- [Reporte final en PDF](docs/Reporte_Final_Programacion_Avanzada_Kagastian_5000.pdf)
+
 
 ## Integrantes
 
